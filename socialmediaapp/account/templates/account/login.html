@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <section>
+        <div class="error">{% if error %}<div class="alert alert-danger">{{ error }}</div>{% endif %}</div>
+
+        <div class="form-box">
+            <div class="form-value">
+                <form method="POST" action="{% url 'login' %}">
+                    {% csrf_token %}
+
+
+                    <h2>Giriş Yap</h2>
+                    <div class="inputbox">
+                    <ion-icon name="contact"></ion-icon>
+                <input type="text" class="form-control" name="username">
+                  <label for="username" class="form-label">Kullanıcı Adı</label>
+                    </div>
+                    <div class="inputbox">
+                        <ion-icon name="lock"></ion-icon>
+                        <input type="password" class="form-control" name="password">
+                        <label for="password" class="form-label">Şifre</label>
+                    </div>
+
+                    <button type="submit" value="Login" class="btn btn-primary">Giriş Yap</button>
+                    <div class="register">
+                        <p>Hesabın yok mu?<a href="{% url 'register' %}">Oluştur</a></p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+</body>
+</body>
+</html>

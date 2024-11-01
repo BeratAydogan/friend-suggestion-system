@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>AAAAAAAAAAAAAAAnasyafa</h1>
+    {% if user.is_authenticated %}
+    <p>{{ user.get_full_name|title }}</p>
+    <a href="{% url 'logout' %}">Çıkış Yap</a>
+    {% endif %}
+
+    <h1>Kullanıcı Listesi</h1>
+    <ul>
+        <!– id de kullanbilirsin –>
+        {% for user in users %}
+            <li>                {{ user.username }} - Takipçi: {{ user.followers_count }} - Takip Edilen: {{ user.following_count }} - Level: {{user.level}}
+            </li>
+            <form action="followers_count" method="POST">
+                {% csrf_token %}
+                <input type="hidden" name="followed" value="{{user.username}}" readonly>
+                <input type="hidden" name="follower" value="{{current_user.username}}" readonly>
+
+                {% if user.is_following %}
+                <input type="hidden" name="value" value="unfollow" readonly>
+                <button type="submit">Unfollow</button>
+            {% else %}
+                <input type="hidden" name="value" value="follow" readonly>
+                <button type="submit">Follow</button>
+            {% endif %}
+            </form>
+
+
+
+        {% empty %}
+            <li>Kullanıcı bulunamadı.</li>
+        {% endfor %}
+        
+    </ul>
+</body>
+</html>

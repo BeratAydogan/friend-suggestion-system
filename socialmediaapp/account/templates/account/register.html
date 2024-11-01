@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <section>
+        <div class="error">{% if error %}<div class="error">{{ error }}</div>{% endif %}</div>
+       <div class="form-box">
+       <div class="form-value">
+           <h2>Register</h2>
+           <hr>
+           <form  method="POST" action="{% url 'register' %}">{% csrf_token %}
+   
+   
+           <div class="user-detail">
+                <div class="inputbox">
+                    <ion-icon name="contact"></ion-icon>
+                    <input type="text" class="form-control" name="username" placeholder="Zorunlu">
+                   <label for="username" class="form-label">Kullanıcı Adı</label>
+   
+               </div>
+           <div class="inputbox">
+               <ion-icon name="mail"></ion-icon>
+                <input type="email" class="form-control" name="email" placeholder="Zorunlu">
+                   <label for="email" class="form-label">Email</label>
+   
+               </div>
+           <div class="ad-soyad">
+                <div class="inputbox">
+                    <ion-icon name="person"></ion-icon>
+                     <input type="text" class="form-control" name="name" placeholder="İsteğe Bağlı">
+                   <label for="name" class="form-label">İsim</label>
+   
+               </div>
+           <div class="inputbox">
+               <ion-icon name="person"></ion-icon>
+                <input type="text" class="form-control" name="surname" placeholder="İsteğe Bağlı">
+                   <label for="surname" class="form-label">Soyisim</label>
+   
+               </div>
+           </div>
+         
+           <div class="parolalar"> <div class="inputbox">
+               <ion-icon name="lock"></ion-icon>
+                <input type="password" class="form-control" name="password" placeholder="Zorunlu">
+                   <label for="password" class="form-label">Parola</label>
+   
+               </div>
+           <div class="inputbox">
+               <ion-icon name="lock"></ion-icon>
+                <input type="password" class="form-control" name="repassword" placeholder="Zorunlu">
+                   <label for="repassword" class="form-label">Parola Tekrarı</label>
+   
+               </div>
+           </div>
+   
+   
+           </div>
+   
+   
+   
+               <button type="submit" value="Register" class="btn btn-primary">Kaydol</button>
+            <div class="login">
+                           <p>Hesabın var mı?<a href="{% url 'login' %}">Giriş Yap</a></p>
+            </div>
+           </form>
+   </div>
+   </div>
+   </section>
+   
+</body>
+</html>
